@@ -1,0 +1,70 @@
+help functions
+
+
+
+logistic regression
+
+
+"""
+##Computing false and true positive rates
+fpr, tpr,_=roc_curve(y_val, predictions_RF_val, drop_intermediate=False)
+
+import matplotlib.pyplot as plt
+plt.figure()
+##Adding the ROC
+plt.plot(fpr, tpr, color='red',
+ lw=2, label='ROC curve')
+##Random FPR and TPR
+plt.plot([0, 1], [0, 1], color='blue', lw=2, linestyle='--')
+##Title and label
+plt.xlabel('FPR')
+plt.ylabel('TPR')
+plt.title('ROC curve')
+plt.show() 
+
+print("Score", roc_auc_score(y_val, predictions_RF_val))"""
+
+
+**************************
+
+#y_pred_prob = logdown.predict_proba(x_val)[:, 1]
+
+##plt.rcParams['font.size'] = 14
+#plt.hist(y_pred_prob, bins = 8)
+#plt.xlim(0,1)
+#plt.title("Historgram of predicted probabilities")
+#plt.xlabel("Predicted probability of telemarketing")
+#plt.ylabel("Frequency")
+
+
+*-**************
+
+#Since we can see highest number of instances have class probability around 0.25, we will set that as a limit, maybe 0.3
+y_pred_prob = y_pred_prob.reshape(1,-1)
+from sklearn.preprocessing import binarize
+y_pred_class = binarize(y_pred_prob, 0.1)[0]
+
+print (confusion_matrix(y_val, y_pred_class))
+print(classification_report(y_val,y_pred_class))
+
+from sklearn.metrics import average_precision_score
+average_precision = average_precision_score(y_val, y_pred_class)
+print('Average precision-recall score: {0:0.2f}'.format(
+      average_precision))
+
+##Computing false and true positive rates
+fpr, tpr,_=roc_curve(y_val, y_pred_class,drop_intermediate=False)
+
+import matplotlib.pyplot as plt
+plt.figure()
+##Adding the ROC
+plt.plot(fpr, tpr, color='red',
+ lw=2, label='ROC curve')
+##Random FPR and TPR
+plt.plot([0, 1], [0, 1], color='blue', lw=2, linestyle='--')
+##Title and label
+plt.xlabel('FPR')
+plt.ylabel('TPR')
+plt.title('ROC curve')
+plt.show() 
+
