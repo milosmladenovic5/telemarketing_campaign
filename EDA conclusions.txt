@@ -1,0 +1,22 @@
+1. Biggest number of those that accept campaign:
+	- university
+	- high school
+	- 9y
+	- 6y
+	- may 2009
+	- april 2009
+
+2. Highest number of contacts performed on:
+	- thursday
+	- monday
+
+3. Most of contacted people have house loan
+
+4. Higher percentage of people that previously accepted to loan bank some money accepted again, despite being in minority of contacted people
+
+5. No missing data
+
+6. Generally older people are more likely to accept to loan bank money, probably because of more money saved in their houses
+
+7. High Pearson corelation (0.95) between number of employed and euribor3m, one of them removed from attributes
+
